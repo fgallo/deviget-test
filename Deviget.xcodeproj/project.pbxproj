@@ -21,6 +21,14 @@
 		A2DFB3E8235E13330020E230 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3E7235E13330020E230 /* NetworkRequest.swift */; };
 		A2DFB3EA235E1C730020E230 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3E9235E1C730020E230 /* APIRequest.swift */; };
 		A2DFB3EC235E1C910020E230 /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3EB235E1C910020E230 /* APIResource.swift */; };
+		A2DFB3F1235E1D2E0020E230 /* TopPostsResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3F0235E1D2E0020E230 /* TopPostsResource.swift */; };
+		A2DFB3F4235E1D680020E230 /* APIRequest+TopPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3F3235E1D680020E230 /* APIRequest+TopPosts.swift */; };
+		A2DFB3F6235E1D7D0020E230 /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3F5235E1D7D0020E230 /* PostResponse.swift */; };
+		A2DFB3F8235E1D830020E230 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3F7235E1D830020E230 /* Post.swift */; };
+		A2DFB3FB235E24720020E230 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3F9235E24720020E230 /* PostTableViewCell.swift */; };
+		A2DFB3FC235E24720020E230 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2DFB3FA235E24720020E230 /* PostTableViewCell.xib */; };
+		A2DFB3FE235E24970020E230 /* PostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3FD235E24970020E230 /* PostCellViewModel.swift */; };
+		A2DFB401235E2B5F0020E230 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB400235E2B5F0020E230 /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +69,14 @@
 		A2DFB3E7235E13330020E230 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		A2DFB3E9235E1C730020E230 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		A2DFB3EB235E1C910020E230 /* APIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResource.swift; sourceTree = "<group>"; };
+		A2DFB3F0235E1D2E0020E230 /* TopPostsResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPostsResource.swift; sourceTree = "<group>"; };
+		A2DFB3F3235E1D680020E230 /* APIRequest+TopPosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIRequest+TopPosts.swift"; sourceTree = "<group>"; };
+		A2DFB3F5235E1D7D0020E230 /* PostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponse.swift; sourceTree = "<group>"; };
+		A2DFB3F7235E1D830020E230 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		A2DFB3F9235E24720020E230 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		A2DFB3FA235E24720020E230 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		A2DFB3FD235E24970020E230 /* PostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellViewModel.swift; sourceTree = "<group>"; };
+		A2DFB400235E2B5F0020E230 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +128,10 @@
 			isa = PBXGroup;
 			children = (
 				A2DFB3D7235E0E400020E230 /* AppDelegate */,
+				A2DFB3FF235E2B510020E230 /* Extensions */,
 				A2DFB3D9235E0E4B0020E230 /* View */,
 				A2DFB3D8235E0E470020E230 /* ViewModel */,
+				A2DFB3F2235E1D540020E230 /* Model */,
 				A2DFB3E6235E13140020E230 /* Network */,
 				A2DFB3AD235E0DE00020E230 /* Main.storyboard */,
 				A2DFB3B2235E0DE20020E230 /* LaunchScreen.storyboard */,
@@ -154,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				A2DFB3E0235E0F170020E230 /* PostsViewModel.swift */,
+				A2DFB3FD235E24970020E230 /* PostCellViewModel.swift */,
 				A2DFB3E4235E10BF0020E230 /* PostDetailsViewModel.swift */,
 			);
 			path = ViewModel;
@@ -163,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				A2DFB3DC235E0E850020E230 /* PostsViewController.swift */,
+				A2DFB3F9235E24720020E230 /* PostTableViewCell.swift */,
+				A2DFB3FA235E24720020E230 /* PostTableViewCell.xib */,
 				A2DFB3E2235E10B60020E230 /* PostDetailsViewController.swift */,
 			);
 			path = View;
@@ -174,8 +195,35 @@
 				A2DFB3E7235E13330020E230 /* NetworkRequest.swift */,
 				A2DFB3E9235E1C730020E230 /* APIRequest.swift */,
 				A2DFB3EB235E1C910020E230 /* APIResource.swift */,
+				A2DFB3ED235E1CFB0020E230 /* Reddit */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		A2DFB3ED235E1CFB0020E230 /* Reddit */ = {
+			isa = PBXGroup;
+			children = (
+				A2DFB3F0235E1D2E0020E230 /* TopPostsResource.swift */,
+				A2DFB3F3235E1D680020E230 /* APIRequest+TopPosts.swift */,
+			);
+			path = Reddit;
+			sourceTree = "<group>";
+		};
+		A2DFB3F2235E1D540020E230 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A2DFB3F5235E1D7D0020E230 /* PostResponse.swift */,
+				A2DFB3F7235E1D830020E230 /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A2DFB3FF235E2B510020E230 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A2DFB400235E2B5F0020E230 /* Date.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +333,7 @@
 				A2DFB3B4235E0DE20020E230 /* LaunchScreen.storyboard in Resources */,
 				A2DFB3B1235E0DE20020E230 /* Assets.xcassets in Resources */,
 				A2DFB3AF235E0DE00020E230 /* Main.storyboard in Resources */,
+				A2DFB3FC235E24720020E230 /* PostTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,14 +359,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2DFB3E8235E13330020E230 /* NetworkRequest.swift in Sources */,
+				A2DFB3F1235E1D2E0020E230 /* TopPostsResource.swift in Sources */,
 				A2DFB3E1235E0F170020E230 /* PostsViewModel.swift in Sources */,
+				A2DFB401235E2B5F0020E230 /* Date.swift in Sources */,
 				A2DFB3E5235E10BF0020E230 /* PostDetailsViewModel.swift in Sources */,
+				A2DFB3F8235E1D830020E230 /* Post.swift in Sources */,
 				A2DFB3DD235E0E850020E230 /* PostsViewController.swift in Sources */,
 				A2DFB3EC235E1C910020E230 /* APIResource.swift in Sources */,
+				A2DFB3FB235E24720020E230 /* PostTableViewCell.swift in Sources */,
+				A2DFB3FE235E24970020E230 /* PostCellViewModel.swift in Sources */,
 				A2DFB3A8235E0DE00020E230 /* AppDelegate.swift in Sources */,
 				A2DFB3AA235E0DE00020E230 /* SceneDelegate.swift in Sources */,
 				A2DFB3EA235E1C730020E230 /* APIRequest.swift in Sources */,
 				A2DFB3E3235E10B60020E230 /* PostDetailsViewController.swift in Sources */,
+				A2DFB3F6235E1D7D0020E230 /* PostResponse.swift in Sources */,
+				A2DFB3F4235E1D680020E230 /* APIRequest+TopPosts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,7 @@ class PostsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
         setupTableView()
         getPosts()
     }
@@ -24,9 +25,16 @@ class PostsViewController: UIViewController {
     
     // MARK: - Setup
     
+    private func setupView() {
+        title = "Reddit Posts"
+        tableView.isHidden = true
+    }
+    
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.register(UINib(nibName: String(describing: PostTableViewCell.self), bundle: nil),
+                           forCellReuseIdentifier: PostTableViewCell.cellIdentifier)
     }
     
     
@@ -49,8 +57,11 @@ extension PostsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO: Implement Post Cell
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.cellIdentifier,
+                                                 for: indexPath) as! PostTableViewCell
+        cell.viewModel = viewModel.viewModelForRowAt(indexPath: indexPath)
+        cell.configure()
+        return cell
     }
     
 }
@@ -59,5 +70,22 @@ extension PostsViewController: UITableViewDataSource {
 // MARK: - UITableView Delegate
 
 extension PostsViewController: UITableViewDelegate {
+    
+}
+
+
+// MARK: - FetchPostsDelegate
+
+extension PostsViewController: FetchPostsDelegate {
+    
+    func fetchPostsSuccess() {
+        activityIndicatorView.stopAnimating()
+        tableView.isHidden = false
+        tableView.reloadData()
+    }
+    
+    func fetchPostsFailure() {
+        activityIndicatorView.stopAnimating()
+    }
     
 }

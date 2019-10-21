@@ -27,7 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 as? PostDetailsViewController
             else { fatalError() }
         
-        let postsViewModel = PostsViewModel()
+        let postsViewModel = PostsViewModel(resource: TopPostsResource())
+        postsViewModel.delegate = postsViewController
         postsViewController.viewModel = postsViewModel
         
         let postDetailsViewModel = PostDetailsViewModel()
