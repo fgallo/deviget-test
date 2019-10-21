@@ -1,5 +1,4 @@
 # iOS-Test
-Teste/Modelo para chamada de API do GitHub
 
 
 ### Guidelines
