@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		A2DFB3A8235E0DE00020E230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3A7235E0DE00020E230 /* AppDelegate.swift */; };
 		A2DFB3AA235E0DE00020E230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3A9235E0DE00020E230 /* SceneDelegate.swift */; };
-		A2DFB3AC235E0DE00020E230 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3AB235E0DE00020E230 /* ViewController.swift */; };
 		A2DFB3AF235E0DE00020E230 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2DFB3AD235E0DE00020E230 /* Main.storyboard */; };
 		A2DFB3B1235E0DE20020E230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2DFB3B0235E0DE20020E230 /* Assets.xcassets */; };
 		A2DFB3B4235E0DE20020E230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2DFB3B2235E0DE20020E230 /* LaunchScreen.storyboard */; };
 		A2DFB3BF235E0DE20020E230 /* DevigetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3BE235E0DE20020E230 /* DevigetTests.swift */; };
 		A2DFB3CA235E0DE20020E230 /* DevigetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3C9235E0DE20020E230 /* DevigetUITests.swift */; };
+		A2DFB3DD235E0E850020E230 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3DC235E0E850020E230 /* PostsViewController.swift */; };
+		A2DFB3E1235E0F170020E230 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3E0235E0F170020E230 /* PostsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,6 @@
 		A2DFB3A4235E0DE00020E230 /* Deviget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deviget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2DFB3A7235E0DE00020E230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2DFB3A9235E0DE00020E230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A2DFB3AB235E0DE00020E230 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A2DFB3AE235E0DE00020E230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A2DFB3B0235E0DE20020E230 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2DFB3B3235E0DE20020E230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +49,8 @@
 		A2DFB3C5235E0DE20020E230 /* DevigetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DevigetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2DFB3C9235E0DE20020E230 /* DevigetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevigetUITests.swift; sourceTree = "<group>"; };
 		A2DFB3CB235E0DE20020E230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2DFB3DC235E0E850020E230 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
+		A2DFB3E0235E0F170020E230 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +101,12 @@
 		A2DFB3A6235E0DE00020E230 /* Deviget */ = {
 			isa = PBXGroup;
 			children = (
-				A2DFB3A7235E0DE00020E230 /* AppDelegate.swift */,
-				A2DFB3A9235E0DE00020E230 /* SceneDelegate.swift */,
-				A2DFB3AB235E0DE00020E230 /* ViewController.swift */,
+				A2DFB3D7235E0E400020E230 /* AppDelegate */,
+				A2DFB3D9235E0E4B0020E230 /* View */,
+				A2DFB3D8235E0E470020E230 /* ViewModel */,
 				A2DFB3AD235E0DE00020E230 /* Main.storyboard */,
-				A2DFB3B0235E0DE20020E230 /* Assets.xcassets */,
 				A2DFB3B2235E0DE20020E230 /* LaunchScreen.storyboard */,
+				A2DFB3B0235E0DE20020E230 /* Assets.xcassets */,
 				A2DFB3B5235E0DE20020E230 /* Info.plist */,
 			);
 			path = Deviget;
@@ -126,6 +128,31 @@
 				A2DFB3CB235E0DE20020E230 /* Info.plist */,
 			);
 			path = DevigetUITests;
+			sourceTree = "<group>";
+		};
+		A2DFB3D7235E0E400020E230 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				A2DFB3A7235E0DE00020E230 /* AppDelegate.swift */,
+				A2DFB3A9235E0DE00020E230 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		A2DFB3D8235E0E470020E230 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A2DFB3E0235E0F170020E230 /* PostsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A2DFB3D9235E0E4B0020E230 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A2DFB3DC235E0E850020E230 /* PostsViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +286,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2DFB3AC235E0DE00020E230 /* ViewController.swift in Sources */,
+				A2DFB3E1235E0F170020E230 /* PostsViewModel.swift in Sources */,
+				A2DFB3DD235E0E850020E230 /* PostsViewController.swift in Sources */,
 				A2DFB3A8235E0DE00020E230 /* AppDelegate.swift in Sources */,
 				A2DFB3AA235E0DE00020E230 /* SceneDelegate.swift in Sources */,
 			);
