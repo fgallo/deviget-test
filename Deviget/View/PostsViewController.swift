@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol PostSelectionDelegate: class {
+    func postSelected(_ post: Post)
+}
+
 class PostsViewController: UIViewController {
     
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
+    
+    weak var delegate: PostSelectionDelegate?
     
     var viewModel: PostsViewModel!
 
@@ -80,6 +86,15 @@ extension PostsViewController: UITableViewDataSource {
 // MARK: - UITableView Delegate
 
 extension PostsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = viewModel.postForRowAt(indexPath: indexPath)
+        delegate?.postSelected(post)
+        
+        if let postDetailsViewController = (delegate as? PostDetailsViewModel)?.delegate as? PostDetailsViewController {
+            splitViewController?.showDetailViewController(postDetailsViewController, sender: nil)
+        }
+    }
     
 }
 

@@ -31,8 +31,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         postsViewModel.delegate = postsViewController
         postsViewController.viewModel = postsViewModel
         
-        let postDetailsViewModel = PostDetailsViewModel()
+        let postDetailsViewModel = PostDetailsViewModel(post: nil)
+        postDetailsViewModel.delegate = postDetailsViewController
         postDetailsViewController.viewModel = postDetailsViewModel
+        postsViewController.delegate = postDetailsViewModel
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

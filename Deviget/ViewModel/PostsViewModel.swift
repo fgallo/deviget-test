@@ -44,6 +44,10 @@ class PostsViewModel {
     
     // MARK: - Posts
     
+    func postForRowAt(indexPath: IndexPath) -> Post {
+        return posts[indexPath.row]
+    }
+    
     func viewModelForRowAt(indexPath: IndexPath) -> PostCellViewModel {
         let post = posts[indexPath.row]
         return PostCellViewModel(post: post)
