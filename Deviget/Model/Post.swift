@@ -9,6 +9,7 @@
 import Foundation
 
 struct Post: Decodable {
+    let id: String
     let author: String
     let title: String
     let thumbnail: String?
@@ -16,6 +17,7 @@ struct Post: Decodable {
     let created: Double
     
     enum CodingKeys: String, CodingKey {
+        case id
         case author
         case title
         case thumbnail

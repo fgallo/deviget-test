@@ -20,7 +20,7 @@ class PostsViewController: UIViewController {
     weak var delegate: PostSelectionDelegate?
     
     var viewModel: PostsViewModel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -37,6 +37,7 @@ class PostsViewController: UIViewController {
     }
     
     private func setupTableView() {
+        tableView.prefetchDataSource = self
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: String(describing: PostTableViewCell.self), bundle: nil),
@@ -49,17 +50,24 @@ class PostsViewController: UIViewController {
     }
     
     
+    // MARK: - Helpers
+    
+    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        return indexPath.row >= viewModel.numberOfPosts() * 3 / 4
+    }
+    
+    
     // MARk: - API
     
     private func getPosts() {
         activityIndicatorView.startAnimating()
-        viewModel.fetchPosts()
+        viewModel.fetchPosts(refreshing: false)
     }
     
     @objc private func refreshPosts() {
-        viewModel.fetchPosts()
+        viewModel.fetchPosts(refreshing: true)
     }
-
+    
 }
 
 
@@ -68,16 +76,33 @@ class PostsViewController: UIViewController {
 extension PostsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfPosts()
+        return viewModel.totalNumberOfPosts()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.cellIdentifier,
                                                  for: indexPath) as! PostTableViewCell
-        cell.viewModel = viewModel.viewModelForRowAt(indexPath: indexPath)
-        cell.viewModel.delegate = cell
-        cell.configure()
+        
+        if !isLoadingCell(for: indexPath) {
+            cell.viewModel = viewModel.viewModelForRowAt(indexPath: indexPath)
+            cell.viewModel.delegate = cell
+            cell.configure()
+        }
+        
         return cell
+    }
+    
+}
+
+
+// MARK: - UITableView DataSourcePrefetching
+
+extension PostsViewController: UITableViewDataSourcePrefetching {
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        if indexPaths.contains(where: isLoadingCell) {
+            viewModel.fetchPosts(refreshing: false)
+        }
     }
     
 }
@@ -106,9 +131,9 @@ extension PostsViewController: FetchPostsDelegate {
     
     func fetchPostsSuccess() {
         activityIndicatorView.stopAnimating()
+        tableView.refreshControl?.endRefreshing()
         tableView.isHidden = false
         tableView.reloadData()
-        tableView.refreshControl?.endRefreshing()
     }
     
     func fetchPostsFailure() {

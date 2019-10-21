@@ -15,6 +15,8 @@ protocol FetchPostsDelegate: class {
 
 class PostsViewModel {
     private var posts: [Post]
+    private var totalCount: Int
+    private var isFetchInProgress: Bool
     private var resource: TopPostsResource
     private var request: AnyObject?
     
@@ -23,20 +25,39 @@ class PostsViewModel {
     init(resource: TopPostsResource) {
         self.resource = resource
         self.posts = []
+        self.isFetchInProgress = false
+        self.totalCount = 0
     }
     
     
     // MARK: - API
     
-    func fetchPosts() {
+    func fetchPosts(refreshing: Bool) {
+        guard !isFetchInProgress else { return }
+        isFetchInProgress = true
+        
+        if refreshing {
+            posts = []
+            totalCount = 0
+            resource.parameters["after"] = ""
+        }
+        
+        if let lastPost = posts.last {
+            resource.parameters["after"] = "t3_\(lastPost.id)"
+        }
+        
         let request = APIRequest(resource: resource)
         self.request = request
+        
         request.load { [weak self] (postsResponse: PostsResponse?) in
             guard let postsResponse = postsResponse else {
+                self?.isFetchInProgress = false
                 self?.delegate?.fetchPostsFailure()
                 return
             }
-            self?.posts = postsResponse.posts
+            self?.isFetchInProgress = false
+            self?.totalCount += postsResponse.posts.count
+            self?.posts.append(contentsOf: postsResponse.posts)
             self?.delegate?.fetchPostsSuccess()
         }
     }
@@ -55,6 +76,10 @@ class PostsViewModel {
     
     func numberOfPosts() -> Int {
         return posts.count
+    }
+    
+    func totalNumberOfPosts() -> Int {
+        return totalCount
     }
     
 }

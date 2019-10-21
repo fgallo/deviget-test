@@ -11,4 +11,9 @@ import Foundation
 struct TopPostsResource: APIResource {
     typealias ModelType = PostsResponse
     let methodPath = "/top"
+    var parameters: [String : String]
+    
+    init(limit: Int) {
+        self.parameters = ["limit" : "\(limit)"]
+    }
 }

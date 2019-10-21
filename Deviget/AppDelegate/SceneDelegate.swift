@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         rightNavController.topViewController?.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         rightNavController.topViewController?.navigationItem.leftItemsSupplementBackButton = true
         
-        let postsViewModel = PostsViewModel(resource: TopPostsResource())
+        let postsViewModel = PostsViewModel(resource: TopPostsResource(limit: 50))
         postsViewModel.delegate = postsViewController
         postsViewController.viewModel = postsViewModel
         
