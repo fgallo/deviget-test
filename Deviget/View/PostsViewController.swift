@@ -60,6 +60,7 @@ extension PostsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.cellIdentifier,
                                                  for: indexPath) as! PostTableViewCell
         cell.viewModel = viewModel.viewModelForRowAt(indexPath: indexPath)
+        cell.viewModel.delegate = cell
         cell.configure()
         return cell
     }

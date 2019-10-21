@@ -38,3 +38,11 @@ class PostTableViewCell: UITableViewCell {
     }
     
 }
+
+extension PostTableViewCell: FetchImageDelegate {
+    
+    func fetchImageSuccess(_ image: UIImage) {
+        thumbnailImageView.image = image
+    }
+    
+}

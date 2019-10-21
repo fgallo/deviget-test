@@ -29,6 +29,7 @@
 		A2DFB3FC235E24720020E230 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2DFB3FA235E24720020E230 /* PostTableViewCell.xib */; };
 		A2DFB3FE235E24970020E230 /* PostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB3FD235E24970020E230 /* PostCellViewModel.swift */; };
 		A2DFB401235E2B5F0020E230 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB400235E2B5F0020E230 /* Date.swift */; };
+		A2DFB403235E311A0020E230 /* ImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB402235E311A0020E230 /* ImageRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		A2DFB3FA235E24720020E230 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		A2DFB3FD235E24970020E230 /* PostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellViewModel.swift; sourceTree = "<group>"; };
 		A2DFB400235E2B5F0020E230 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		A2DFB402235E311A0020E230 /* ImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				A2DFB3E7235E13330020E230 /* NetworkRequest.swift */,
+				A2DFB402235E311A0020E230 /* ImageRequest.swift */,
 				A2DFB3E9235E1C730020E230 /* APIRequest.swift */,
 				A2DFB3EB235E1C910020E230 /* APIResource.swift */,
 				A2DFB3ED235E1CFB0020E230 /* Reddit */,
@@ -372,6 +375,7 @@
 				A2DFB3AA235E0DE00020E230 /* SceneDelegate.swift in Sources */,
 				A2DFB3EA235E1C730020E230 /* APIRequest.swift in Sources */,
 				A2DFB3E3235E10B60020E230 /* PostDetailsViewController.swift in Sources */,
+				A2DFB403235E311A0020E230 /* ImageRequest.swift in Sources */,
 				A2DFB3F6235E1D7D0020E230 /* PostResponse.swift in Sources */,
 				A2DFB3F4235E1D680020E230 /* APIRequest+TopPosts.swift in Sources */,
 			);

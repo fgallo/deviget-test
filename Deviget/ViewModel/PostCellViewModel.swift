@@ -7,6 +7,11 @@
 //
 
 import Foundation
+import UIKit
+
+protocol FetchImageDelegate: class {
+    func fetchImageSuccess(_ image: UIImage)
+}
 
 class PostCellViewModel {
     
@@ -14,18 +19,33 @@ class PostCellViewModel {
     let title: String
     let createdTime: String
     let numberOfComments: String
-    let thumbnailURL: URL?
+    
+    private var request: AnyObject?
+    
+    weak var delegate: FetchImageDelegate?
     
     init(post: Post) {
         self.author = post.author
         self.title = post.title
+        self.numberOfComments = "\(post.numberOfComments) comments"
         
         let date = Date(timeIntervalSince1970: post.created)
         self.createdTime = date.timeAgo()
         
-        
-        self.numberOfComments = "\(post.numberOfComments) comments"
-        self.thumbnailURL = URL(string: post.thumbnail ?? "")
+        fetchImage(url: URL(string: post.thumbnail ?? ""))
+    }
+    
+    private func fetchImage(url: URL?) {
+        if let url = url {
+            let thumbnailRequest = ImageRequest(url: url)
+            request = thumbnailRequest
+            thumbnailRequest.load { [weak self] (thumbnail: UIImage?) in
+                guard let thumbnail = thumbnail else {
+                    return
+                }
+                self?.delegate?.fetchImageSuccess(thumbnail)
+            }
+        }
     }
     
 }
