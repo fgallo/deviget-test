@@ -22,11 +22,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let leftNavController = splitViewController.viewControllers.first
                 as? UINavigationController,
             let postsViewController = leftNavController.viewControllers.first
-                as? PostsViewController
+                as? PostsViewController,
+            let postDetailsViewController = splitViewController.viewControllers.last
+                as? PostDetailsViewController
             else { fatalError() }
         
         let postsViewModel = PostsViewModel()
         postsViewController.viewModel = postsViewModel
+        
+        let postDetailsViewModel = PostDetailsViewModel()
+        postDetailsViewController.viewModel = postDetailsViewModel
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
