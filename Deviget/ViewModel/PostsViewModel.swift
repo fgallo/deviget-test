@@ -36,7 +36,7 @@ class PostsViewModel {
                 self?.delegate?.fetchPostsFailure()
                 return
             }
-            self?.posts.append(contentsOf: postsResponse.posts)
+            self?.posts = postsResponse.posts
             self?.delegate?.fetchPostsSuccess()
         }
     }

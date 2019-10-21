@@ -35,6 +35,11 @@ class PostsViewController: UIViewController {
         tableView.delegate = self
         tableView.register(UINib(nibName: String(describing: PostTableViewCell.self), bundle: nil),
                            forCellReuseIdentifier: PostTableViewCell.cellIdentifier)
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshPosts), for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = .white
+        tableView.refreshControl = refreshControl
     }
     
     
@@ -42,6 +47,10 @@ class PostsViewController: UIViewController {
     
     private func getPosts() {
         activityIndicatorView.startAnimating()
+        viewModel.fetchPosts()
+    }
+    
+    @objc private func refreshPosts() {
         viewModel.fetchPosts()
     }
 
@@ -83,10 +92,12 @@ extension PostsViewController: FetchPostsDelegate {
         activityIndicatorView.stopAnimating()
         tableView.isHidden = false
         tableView.reloadData()
+        tableView.refreshControl?.endRefreshing()
     }
     
     func fetchPostsFailure() {
         activityIndicatorView.stopAnimating()
+        tableView.refreshControl?.endRefreshing()
     }
     
 }
