@@ -38,4 +38,8 @@ extension PostDetailsViewController: PostDetailsDelegate {
         setupPostFields()
     }
     
+    func fetchImageSuccess(_ image: UIImage) {
+        postImageView.image = image
+    }
+    
 }

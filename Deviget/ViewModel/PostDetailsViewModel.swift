@@ -7,14 +7,17 @@
 //
 
 import Foundation
+import UIKit
 
 protocol PostDetailsDelegate: class {
     func refreshPostDetails()
+    func fetchImageSuccess(_ image: UIImage)
 }
 
 class PostDetailsViewModel {
     
     private var post: Post?
+    private var request: AnyObject?
     
     weak var delegate: PostDetailsDelegate?
     
@@ -35,6 +38,19 @@ class PostDetailsViewModel {
         return date.timeAgo()
     }
     
+    private func fetchImage() {
+        if let url = URL(string: post?.thumbnail ?? "") {
+            let thumbnailRequest = ImageRequest(url: url)
+            request = thumbnailRequest
+            thumbnailRequest.load { [weak self] (thumbnail: UIImage?) in
+                guard let thumbnail = thumbnail else {
+                    return
+                }
+                self?.delegate?.fetchImageSuccess(thumbnail)
+            }
+        }
+    }
+    
 }
 
 
@@ -44,6 +60,7 @@ extension PostDetailsViewModel: PostSelectionDelegate {
     
     func postSelected(_ post: Post) {
         self.post = post
+        self.fetchImage()
         self.delegate?.refreshPostDetails()
     }
     
