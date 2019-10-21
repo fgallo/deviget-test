@@ -13,7 +13,7 @@ struct Post: Decodable {
     let title: String
     let thumbnail: String?
     let numberOfComments: Int
-    let created: Int
+    let created: Double
     
     enum CodingKeys: String, CodingKey {
         case author
