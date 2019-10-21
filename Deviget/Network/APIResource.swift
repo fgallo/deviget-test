@@ -12,3 +12,11 @@ protocol APIResource {
     associatedtype ModelType: Decodable
     var methodPath: String { get }
 }
+
+extension APIResource {
+    var url: URL {
+        var components = URLComponents(string: "https://api.reddit.com")!
+        components.path = methodPath
+        return components.url!
+    }
+}
