@@ -23,9 +23,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 as? UINavigationController,
             let postsViewController = leftNavController.viewControllers.first
                 as? PostsViewController,
-            let postDetailsViewController = splitViewController.viewControllers.last
+            let rightNavController = splitViewController.viewControllers.last
+                as? UINavigationController,
+            let postDetailsViewController = rightNavController.viewControllers.first
                 as? PostDetailsViewController
             else { fatalError() }
+        
+        rightNavController.topViewController?.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        rightNavController.topViewController?.navigationItem.leftItemsSupplementBackButton = true
         
         let postsViewModel = PostsViewModel(resource: TopPostsResource())
         postsViewModel.delegate = postsViewController
@@ -64,7 +69,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-    
     
 }
 

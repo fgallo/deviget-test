@@ -91,8 +91,9 @@ extension PostsViewController: UITableViewDelegate {
         let post = viewModel.postForRowAt(indexPath: indexPath)
         delegate?.postSelected(post)
         
-        if let postDetailsViewController = (delegate as? PostDetailsViewModel)?.delegate as? PostDetailsViewController {
-            splitViewController?.showDetailViewController(postDetailsViewController, sender: nil)
+        if let postDetailsViewController = (delegate as? PostDetailsViewModel)?.delegate as? PostDetailsViewController,
+            let postDetailsNavigationController = postDetailsViewController.navigationController {
+            splitViewController?.showDetailViewController(postDetailsNavigationController, sender: nil)
         }
     }
     
